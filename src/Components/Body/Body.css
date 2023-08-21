@@ -1,0 +1,70 @@
+.body{
+    position: relative;
+    padding: 0rem 3.5rem;
+}
+.weather-name p{
+    position: absolute;
+    top: 34px;
+    color: #FFF;
+    font-family: "Inter";
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.weather-image{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.weather-temp{
+    margin-top: -64px;
+}
+.temperature{
+    color: #FFF;
+    font-family: "Inter";
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.date p{
+    color: #FFF;
+    font-family: "Inter";
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+@media (max-width: 1000px) {
+    .body{
+        margin-top: 103px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 0rem 0rem;
+    }
+    .weather-name p{
+        position: relative;
+        top: 0px;
+        color: #FFF;
+        font-family: "Inter";
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .weather-image{
+        justify-content: center;
+    }
+    .weather-temp{
+        margin-top: 0px;
+    }
+    .temperature{
+        text-align: center;
+    }
+    .date p{
+        text-align: center;
+    }
+}

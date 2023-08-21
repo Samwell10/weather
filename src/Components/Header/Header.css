@@ -1,0 +1,39 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 3.5rem;
+}
+.header-location{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.header-location svg{
+    color: #FFF;
+    font-size: 1.8rem;
+}
+.location{
+    color: #FFF;
+    font-family: "Inter";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.header-mobile{
+    display: none;
+}
+@media (max-width: 1000px) {
+    .header{
+        padding: 0rem 0rem;
+    }
+    .header-mobile{
+        display: block;
+    }
+    .header-mobile img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}

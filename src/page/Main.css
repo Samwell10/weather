@@ -1,0 +1,15 @@
+.main{
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background: #D69E36;
+    padding: 3rem 2.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+@media (max-width: 1000px) {
+    .main{
+        padding: 1.5rem 1.5rem;
+    }
+}
