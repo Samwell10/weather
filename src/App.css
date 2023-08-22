@@ -12,6 +12,6 @@
 }
 @media (max-width: 1000px) {
     .spinner{
-        width: 100%;
+        width: 50%;
     }
 }

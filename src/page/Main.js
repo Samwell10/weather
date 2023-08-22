@@ -6,12 +6,14 @@ import cloudy from '../Assets/cloudy.jpg';
 import rainy from '../Assets/rainy.jpg';
 import snow from '../Assets/snow1.jpg';
 import thunder from '../Assets/thunder.jpg';
+import load from '../Assets/loading.json'
 import './Main.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { fetchweather } from '../Redux/Weather/WeatherAction';
-const Main = ({fetchweather}) => {
+import LottieAnimation from '../Lotties';
+const Main = ({fetchweather, loading}) => {
     const [background, setBackground] = useState(''); // State to store the selected background
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
@@ -51,20 +53,29 @@ const Main = ({fetchweather}) => {
     }, []);
   
     useEffect(()=>{
+      if(latitude != null && longitude != null){
         fetchweather(latitude, longitude)
+      }
     },[latitude, longitude])
     return ( 
-        <div className="main" style={{background}}>
+      <>
+        {loading ? (
+          <div className="preloader">
+          <LottieAnimation data={load}/>
+        </div>) : (
+          <div className="main" style={{background}}>
             <Header location={locationName}/>
             <Body/>
             <Widgets change={handleImageClick} change2={handleColorClick}/>
         </div>
+        )}
+      </>
     );
 }
 const mapStoreToProps = (state) => {
   // 
   return {
-      
+    loading: state.weather.loading  
   };
 };
 
