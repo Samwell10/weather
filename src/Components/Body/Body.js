@@ -27,7 +27,7 @@ const Body = ({data, weathercode}) => {
                 {(data?.daily?.weathercode[0] == 0 || data?.daily?.weathercode[0] == 1) && (<LottieAnimation data={clear}/>)}
                 {(data?.daily?.weathercode[0] == 95 || data?.daily?.weathercode[0] == 96 || data?.daily?.weathercode[0] == 99) && (<LottieAnimation data={thunder}/>)}
                 {(data?.daily?.weathercode[0] == 61 || data?.daily?.weathercode[0] == 63 || data?.daily?.weathercode[0] == 65 || data?.daily?.weathercode[0] == 66 || data?.daily?.weathercode[0] == 67 || data?.daily?.weathercode[0] == 80 || data?.daily?.weathercode[0] == 81 || data?.daily?.weathercode[0] == 82) && (<LottieAnimation data={rain}/>)}
-                {(data?.daily?.weathercode[0] == 71 || data?.daily?.weathercode[0] == 73 || data?.daily?.weathercode[0] == 75 || data?.daily?.weathercode[0] == 80 || data?.daily?.weathercode[0] == 81 || data?.daily?.weathercode[0] == 82 || data?.daily?.weathercode[0] == 85 || data?.daily?.weathercode[0] == 85) && (<LottieAnimation data={snow}/>)}
+                {(data?.daily?.weathercode[0] == 71 || data?.daily?.weathercode[0] == 73 || data?.daily?.weathercode[0] == 75 || data?.daily?.weathercode[0] == 77 || data?.daily?.weathercode[0] == 85 || data?.daily?.weathercode[0] == 86) && (<LottieAnimation data={snow}/>)}
                 {(data?.daily?.weathercode[0] == 3 || data?.daily?.weathercode[0] == 2 || data?.daily?.weathercode[0] == 99) && (<LottieAnimation data={cloud}/>)}
             </div>
             <div className="weather-temp">
