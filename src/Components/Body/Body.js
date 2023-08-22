@@ -21,7 +21,11 @@ const Body = ({data, weathercode}) => {
     return ( 
         <div className="body">
             <div className="weather-name">
-                <p>Cloudy</p>
+                {(data?.daily?.weathercode[0] == 0 || data?.daily?.weathercode[0] == 1) && (<p>Clear Sky</p>)}
+                {(data?.daily?.weathercode[0] == 95 || data?.daily?.weathercode[0] == 96 || data?.daily?.weathercode[0] == 99) && (<p>ThunderStorm</p>)}
+                {(data?.daily?.weathercode[0] == 61 || data?.daily?.weathercode[0] == 63 || data?.daily?.weathercode[0] == 65 || data?.daily?.weathercode[0] == 66 || data?.daily?.weathercode[0] == 67 || data?.daily?.weathercode[0] == 80 || data?.daily?.weathercode[0] == 81 || data?.daily?.weathercode[0] == 82) && (<p>Rainy</p>)}
+                {(data?.daily?.weathercode[0] == 71 || data?.daily?.weathercode[0] == 73 || data?.daily?.weathercode[0] == 75 || data?.daily?.weathercode[0] == 77 || data?.daily?.weathercode[0] == 85 || data?.daily?.weathercode[0] == 86) && (<p>Snow</p>)}
+                {(data?.daily?.weathercode[0] == 3 || data?.daily?.weathercode[0] == 2 || data?.daily?.weathercode[0] == 99) && (<p>Cloudy</p>)}
             </div>
             <div className="weather-image">
                 {(data?.daily?.weathercode[0] == 0 || data?.daily?.weathercode[0] == 1) && (<LottieAnimation data={clear}/>)}
