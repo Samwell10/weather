@@ -10,6 +10,10 @@
 .spinner{
     width: 20%;
 }
+.spinner-2{
+    width: 15%;
+}
+
 @media (max-width: 1000px) {
     .spinner{
         width: 50%;

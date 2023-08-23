@@ -4,10 +4,10 @@ import {IoMdPartlySunny} from 'react-icons/io'
 import {FaWind} from 'react-icons/fa6'
 import {PiThermometerSimple} from 'react-icons/pi'
 import { IoLocationSharp, IoThunderstormSharp } from 'react-icons/io5';
-import {RiCompass3Fill} from 'react-icons/ri'
+import {RiCompass3Fill, RiDrizzleFill} from 'react-icons/ri'
 import {IoMdSettings} from 'react-icons/io'
 import {ImDroplet} from 'react-icons/im'
-import {BsFillSunFill} from 'react-icons/bs'
+import {BsCloudRainFill, BsFillCloudFog2Fill, BsFillCloudHazeFill, BsFillCloudLightningRainFill, BsFillCloudSnowFill, BsFillCloudSunFill, BsFillSunFill} from 'react-icons/bs'
 import image from '../../Assets/Home.png'
 import sunny from '../../Assets/sunny.jpeg';
 import cloudy from '../../Assets/cloudy.jpg';
@@ -16,9 +16,18 @@ import snow from '../../Assets/snow1.jpg';
 import thunder from '../../Assets/thunder.jpg';
 import background from '../../Assets/background1.jpeg';
 import { MdColorLens, MdPhoto } from 'react-icons/md';
+import { connect } from 'react-redux';
 
-const Widgets = ({change, change2}) => {
+const Widgets = ({change, change2, data}) => {
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+    const convertedData = data?.daily?.time.map((dateString, index) => {
+        const date = new Date(dateString);
+        const dayOfWeek = daysOfWeek[date.getDay()];
+        const temperature = data?.daily?.weathercode[index];
+    
+        return { dayOfWeek, temperature };
+      });
     return ( 
         <div className="widgets">
             <div className="nav-menu">
@@ -46,7 +55,21 @@ const Widgets = ({change, change2}) => {
             </div>
             <div className="forecast">
                 {/* <Slider> */}
-                    <div className="day-weather">
+                {convertedData.map((data, index) => (
+                
+                        <div key={index} className="day-weather">
+                            <p>{data.dayOfWeek}</p>
+                            {(data.temperature == 45 || data.temperature == 48) && (<BsFillCloudFog2Fill/>)}
+                            {(data.temperature == 0 || data.temperature == 1) && (<BsFillCloudSunFill/>)}
+                            {(data.temperature == 95 || data.temperature == 96 || data.temperature == 99) && (<BsFillCloudLightningRainFill/>)}
+                            {(data.temperature == 61 || data.temperature == 63 || data.temperature == 65 || data.temperature == 66 || data.temperature == 67 || data.temperature == 80 || data.temperature == 81 || data.temperature == 82) && (<BsCloudRainFill/>)}
+                            {(data.temperature == 71 || data.temperature == 73 || data.temperature == 75 || data.temperature == 77 || data.temperature == 85 || data.temperature == 86) && (<BsFillCloudSnowFill/>)}
+                            {(data.temperature == 3 || data.temperature == 2 || data.temperature == 99) && (<BsFillCloudHazeFill/>)}
+                            {(data.temperature == 51 || data.temperature == 53 || data.temperature == 55 || data.temperature == 56 || data.temperature == 57) && (<RiDrizzleFill/>)}
+                        </div>
+                   
+                ))}
+                    {/* <div className="day-weather">
                         <p>Mon</p>
                         <IoThunderstormSharp/>
                     </div>
@@ -73,7 +96,7 @@ const Widgets = ({change, change2}) => {
                     <div className="day-weather">
                         <p>Sun</p>
                         <IoThunderstormSharp/>
-                    </div>
+                    </div> */}
                 {/* </Slider> */}
             </div>
             <div className="conditions">
@@ -86,7 +109,7 @@ const Widgets = ({change, change2}) => {
                                 <p>Real Feel</p>
                             </div>
                             <p className="condition-value">
-                                30°
+                                {data?.daily?.temperature_2m_max[0]}°
                             </p>
                         </div>
                         <div className="condition">
@@ -95,16 +118,16 @@ const Widgets = ({change, change2}) => {
                                 <p>Wind</p>
                             </div>
                             <p className="condition-value">
-                                0.8 km/hr
+                                {data?.daily?.windspeed_10m_max[0]}km/hr
                             </p>
                         </div>
                         <div className="condition">
                             <div className="condition-title">
                                 <ImDroplet/>
-                                <p>Chance of rain</p>
+                                <p>Shortwave Radiation</p>
                             </div>
                             <p className="condition-value">
-                                2%
+                                {data?.daily?.shortwave_radiation_sum[0]}MJ/m²
                             </p>
                         </div>
                         <div className="condition">
@@ -113,7 +136,7 @@ const Widgets = ({change, change2}) => {
                                 <p>UV Index</p>
                             </div>
                             <p className="condition-value">
-                                4
+                               {data?.daily?.uv_index_max[0]}
                             </p>
                         </div>
                     </div>
@@ -184,5 +207,17 @@ const Widgets = ({change, change2}) => {
         </div>
     );
 }
- 
-export default Widgets;
+const mapStoreToProps = (state) => {
+    console.log(state)
+    return {
+        data: state.weather?.data,
+        weathercode: state?.weather?.data?.daily?.weathercode
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+    
+    };
+}; 
+export default connect(mapStoreToProps, mapDispatchToProps)(Widgets);

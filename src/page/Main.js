@@ -13,6 +13,7 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import { fetchweather } from '../Redux/Weather/WeatherAction';
 import LottieAnimation from '../Lotties';
+import { LottieAnimation2 } from '../Lotties';
 const Main = ({fetchweather, loading}) => {
     const [background, setBackground] = useState(''); // State to store the selected background
     const [latitude, setLatitude] = useState(null);
@@ -61,8 +62,10 @@ const Main = ({fetchweather, loading}) => {
       <>
         {loading ? (
           <div className="preloader">
-          <LottieAnimation data={load}/>
-        </div>) : (
+            <LottieAnimation2 data={load}/>
+            <p>Enable Location......</p>
+          </div>
+        ) : (
           <div className="main" style={{background}}>
             <Header location={locationName}/>
             <Body/>

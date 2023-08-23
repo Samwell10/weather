@@ -1,7 +1,7 @@
 import { WEATHER_REQUEST, WEATHER_SUCCESS, WEATHER_FALIURE } from "./WeatherType"
 
 const initialState ={
-    loading: false,
+    loading: true,
     data: [],
     error: ''
 }
