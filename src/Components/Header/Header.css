@@ -21,6 +21,48 @@
     font-weight: 500;
     line-height: normal;
 }
+.search{
+    /* visibility: hidden;
+    margin-left: -200px; */
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+.search input{
+    background-color: transparent;
+    border: none;
+    font-size: 0.8rem;
+    font-family: 'Inter';
+    font-weight: 500;
+    color: #FFF;
+}
+.search svg{
+    font-size: 0.8rem;
+}
+input:focus{
+    outline: none;
+}
+.header-inner{
+    position: relative;
+}
+.search-locations{
+    top: 50px;
+    z-index: 5;
+    position: absolute;
+    width: 200px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+.search-locations p{
+    font-size: 1rem;
+    font-family: 'Inter';
+    font-weight: 400;
+    color: black;
+    margin-bottom: 12px;
+}
 .header-mobile{
     display: none;
 }

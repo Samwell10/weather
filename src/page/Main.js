@@ -67,7 +67,7 @@ const Main = ({fetchweather, loading}) => {
           </div>
         ) : (
           <div className="main" style={{background}}>
-            <Header location={locationName}/>
+            <Header location={locationName} setlocation={setLocationName}/>
             <Body/>
             <Widgets change={handleImageClick} change2={handleColorClick}/>
         </div>
